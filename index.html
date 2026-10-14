@@ -6,6 +6,10 @@
 <title>Cebo Car Detailing</title>
 <meta name="description" content="Car detailing a domicilio in Veneto e Lombardia. Listino 2027 per privati e autorivenditori: interno, lucidatura, Esperienza Cebo.">
 <style>
+/* Layout: floating island nav; cinematic full-bleed hero with an inline photo pill in the headline; gapless bento of services
+   built from crops of the real van; pinned split for the extras; scrubbed text reveal for Esperienza; horizontal accordion
+   for "come lavoriamo"; massive closing CTA. Floating control island (cliente + taglia) drives every price.
+   Single dark theme: brand azzurro CEBO on OLED black. */
 :root{
   --bg:#040506;
   --shell:rgba(255,255,255,.035);
@@ -42,6 +46,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 .sub{color:var(--muted);font-size:1.05rem;max-width:48ch}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 
+/* Buttons: island with nested icon */
 .btn{--h:56px;display:inline-flex;align-items:center;gap:14px;height:var(--h);padding:0 6px 0 24px;border-radius:999px;font:600 .98rem/1 var(--f);text-decoration:none;white-space:nowrap;transition:transform .5s var(--spring),background .4s var(--spring),color .4s;border:0;cursor:pointer}
 .btn i{width:44px;height:44px;border-radius:999px;display:grid;place-items:center;transition:transform .5s var(--spring)}
 .btn i .ic{width:18px;height:18px;stroke-width:1.8}
@@ -53,6 +58,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 .btn-glass i{background:rgba(255,255,255,.1)}
 .btn-glass:hover{background:rgba(255,255,255,.13)}
 
+/* Menu button */
 .burger{all:unset;box-sizing:border-box;position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right:16px;z-index:45;width:52px;height:52px;border-radius:999px;cursor:pointer;background:rgba(10,13,16,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px var(--hair-2),0 16px 30px -18px rgba(0,0,0,.9);transition:background .4s var(--spring)}
 .burger:hover{background:rgba(20,26,31,.8)}
 .burger span{position:absolute;left:16px;right:16px;height:1.6px;border-radius:2px;background:var(--fg);transition:transform .5s var(--spring),top .5s var(--spring),opacity .3s}
@@ -99,6 +105,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 .menu.open .m-logo,.menu.open .m-row,.menu.open .m-foot{opacity:1;transform:none}
 @media (max-width:420px){.m-thumb{width:50px;height:50px;border-radius:15px}.m-thumb .ic{width:23px;height:23px}.m-row{gap:12px;padding:10px 2px}.m-go{width:34px;height:34px}.m-foot .btn{flex:1;justify-content:space-between}}
 
+/* Hero */
 .hero{position:relative;min-height:clamp(640px,96dvh,900px);display:grid;align-items:end;padding:120px 0 64px;isolation:isolate;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:-2}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;transform:scale(1.08);filter:saturate(.9) contrast(1.05)}
@@ -112,9 +119,11 @@ section{padding-block:clamp(64px,8vw,112px)}
 .hero-meta span{display:inline-flex;align-items:center;gap:8px}
 .hero-meta .ic{color:var(--cyan);width:16px;height:16px}
 
+/* Double bezel */
 .bezel{background:var(--shell);box-shadow:inset 0 0 0 1px var(--hair);border-radius:var(--r);padding:6px}
 .core{position:relative;height:100%;background:var(--core);border-radius:calc(var(--r) - 6px);box-shadow:inset 0 1px 0 rgba(255,255,255,.07);overflow:hidden}
 
+/* Price controls (inline + floating island) */
 .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .seg{position:relative;display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;padding:4px;border-radius:999px;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--hair)}
 .seg button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;z-index:1;min-height:42px;padding:0 16px;border-radius:999px;display:grid;place-items:center;font-size:.9rem;font-weight:500;color:var(--muted);transition:color .4s var(--spring)}
@@ -135,6 +144,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 .island .sizes button{min-width:40px;padding:0 6px}
 @media (max-width:420px){.island .who button{padding:0 9px;font-size:.78rem}.island .sizes button{min-width:34px}}
 
+/* Services bento */
 .svc-head{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:end;justify-content:space-between;margin-bottom:40px}
 .svc-head > div{display:grid;gap:16px}
 .bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -186,6 +196,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 @media (max-width:980px){.bento{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.bento{grid-template-columns:1fr}.bento .card{min-height:330px}.bento .card ul{display:none}}
 
+/* Extras: pinned split */
 .split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,90px);align-items:start}
 .split-left{display:grid;gap:20px;align-content:start}
 .split-left .photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;max-width:340px;box-shadow:inset 0 0 0 1px var(--hair)}
@@ -234,6 +245,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 @media (max-width:900px){.split{grid-template-columns:1fr}.split-left .photo{display:none}}
 @media (max-width:600px){.xrow > div > span{display:none}.xrow{padding:12px 0}}
 
+/* Esperienza */
 .exp-core{height:auto;position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(26px,4vw,52px);min-height:min(620px,86svh)}
 .exp-bg{position:absolute;inset:0;z-index:-1;background:url(foto-pasta-tampone.jpg) 50% 40%/cover;transition:transform 1.4s var(--spring)}
 .exp-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,5,6,.92) 0%,rgba(4,5,6,.72) 55%,rgba(4,5,6,.55) 100%)}
@@ -253,6 +265,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 .exp-right .buyrow{padding-top:4px}
 @media (max-width:900px){.exp-core{grid-template-columns:1fr;gap:16px;padding:22px;min-height:0}.exp-bg::after{background:linear-gradient(180deg,rgba(4,5,6,.7) 0%,rgba(4,5,6,.9) 50%,rgba(4,5,6,.96) 100%)}.reveal .w{opacity:1}.exp-left{gap:10px}.exp-left .h2{font-size:2rem}.reveal{font-size:1.1rem;line-height:1.35}.plus{font-size:3rem}.trio div{padding:9px 12px}.exp-right .price b{font-size:2.2rem}.exp-right .buyrow{flex-wrap:nowrap;align-items:center;margin-top:0;padding-top:0}.exp-right{gap:10px}.plusrow{gap:12px}.plusrow p{font-size:.82rem}.trio{gap:6px}.trio div{font-size:.8rem;gap:10px}.trio strong{font-size:.88rem}.trio .ic{width:18px;height:18px}}
 
+/* Come lavoriamo: horizontal accordion */
 @media (max-width:360px){.slice h3{font-size:1.08rem!important;white-space:nowrap}.slice p{height:9.8em!important}}
 .come-h{margin-bottom:28px}
 @media (max-width:900px){.come-h{margin-bottom:16px;font-size:2rem}}
@@ -313,7 +326,7 @@ html.locked{overflow:hidden}
 .sh-tiers span{font-size:.76rem;color:#c9d3d6;line-height:1.3}
 .sheet-cta{justify-self:start;margin-top:4px}
 @media (max-width:600px){.sheet{place-items:end center;padding:0}.sheet-panel{width:100%;border-radius:26px 26px 0 0;max-height:90svh;padding:6px 6px 0;transform:translateY(40px)}.sheet-body{border-radius:20px 20px 0 0}.sh-hero{height:150px;padding:18px}.sh-hero::after{left:18px}.sh-badge{width:44px;height:44px;border-radius:14px}.sh-badge .ic{width:22px;height:22px}.sh-in{padding:16px 16px calc(22px + env(safe-area-inset-bottom,0px));gap:12px}.sh-lead{font-size:.94rem}.sh-facts{grid-template-columns:1fr}.sh-f{padding:12px}.sh-tiers b{font-size:1.02rem;white-space:nowrap}.sh-tiers div{padding:10px}.sheet-x{top:14px;right:14px}.sheet-cta{justify-self:stretch;justify-content:space-between}}
-
+/* CTA */
 .cta{padding-bottom:clamp(72px,10vw,120px)}
 .cta .big{font-size:clamp(3.4rem,1.5rem + 9vw,10rem);font-weight:600;letter-spacing:-.04em;line-height:.92}
 .cta .big span{color:var(--cyan)}
@@ -329,33 +342,11 @@ html.locked{overflow:hidden}
 @media (max-width:760px){.cta-grid{grid-template-columns:1fr}}
 @media (max-width:400px){.soc a{padding:0 10px;font-size:.8rem;gap:6px}.soc{gap:6px}}
 
+
+/* Entry motion (only when JS runs) */
 .js .up{transform:translateY(48px);opacity:.001;filter:blur(8px);transition:transform 1.1s var(--spring),opacity 1.1s var(--spring),filter 1.1s var(--spring)}
 .js .up.in{transform:none;opacity:1;filter:none}
 @media (prefers-reduced-motion:reduce){.js .up{transform:none;opacity:1;filter:none}}
-
-/* Logo centrale in alto per Desktop e Phone */
-.hero-logo-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 32px;
-  width: 100%;
-}
-
-.hero-logo-center img {
-  height: 90px;
-  width: auto;
-  max-width: 400px;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.7));
-}
-
-@media (max-width: 600px) {
-  .hero-logo-center img {
-    height: 70px;
-    max-width: 300px;
-  }
-}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -399,12 +390,6 @@ html.locked{overflow:hidden}
   <section class="hero">
     <div class="hero-bg"><img id="hero-img" src="furgone.jpg" alt="Il furgone Cebo aperto, con l'attrezzatura per il detailing a bordo" width="1400" height="1867" fetchpriority="high"></div>
     <div class="wrap">
-      
-      <!-- LOGO CENTRATO IN ALTO (Sia Web che Smartphone) -->
-      <div class="hero-logo-center">
-        <img src="logo.png" alt="Cebo Car Detailing">
-      </div>
-
       <h1>La cura che la tua auto <em>merita</em>.</h1>
       <p class="sub">Car detailing a domicilio in Veneto e Lombardia.<br>Il nostro laboratorio arriva da te, ovunque sia la tua auto.</p>
       <div class="hero-actions">
@@ -429,6 +414,7 @@ html.locked{overflow:hidden}
           <p class="size-ex" id="size-ex" aria-live="polite"></p>
         </div>
       </div>
+
 
       <div class="bento">
         <article class="bezel b-base up">
@@ -565,6 +551,8 @@ html.locked{overflow:hidden}
 <nav aria-label="Informazioni legali"><a href="privacy-policy.html">Privacy Policy</a><a href="cookie-policy.html">Cookie Policy</a></nav>
 </div></footer>
 
+
+
 <div class="sheet" id="sheet" hidden>
   <div class="sheet-bg" data-close></div>
   <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title" tabindex="-1">
@@ -625,6 +613,7 @@ html.locked{overflow:hidden}
   });
   render();
   window.addEventListener('resize',function(){$('.seg').forEach(placeKnob);});
+  // keep the size-example line the same height for every size (no jumps)
   function exHeight(){var el=document.getElementById('size-ex'),cur=el.textContent,max=0;el.style.minHeight='';
     EX.forEach(function(t){el.textContent=t;max=Math.max(max,el.getBoundingClientRect().height);});
     el.textContent=cur;el.style.minHeight=Math.ceil(max)+'px';}
@@ -632,12 +621,14 @@ html.locked{overflow:hidden}
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(exHeight);
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){$('.seg').forEach(placeKnob);});
 
+  // Mobile menu
   var burger=document.getElementById('burger'),menu=document.getElementById('menu');
   function toggle(open){burger.setAttribute('aria-expanded',open);burger.setAttribute('aria-label',open?'Chiudi il menu':'Apri il menu');menu.classList.toggle('open',open);document.documentElement.classList.toggle('locked',open);menu.setAttribute('aria-hidden',!open);}
   burger.addEventListener('click',function(){toggle(burger.getAttribute('aria-expanded')!=='true');});
   $('a',menu).forEach(function(a){a.addEventListener('click',function(){toggle(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')toggle(false);});
 
+  // Entry reveals
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
     $('.up').forEach(function(el){io.observe(el);});
@@ -657,6 +648,8 @@ html.locked{overflow:hidden}
   window.addEventListener('resize',syncIsland);
   syncIsland();
 
+
+  // Info sheets
   var INFO={"dom": {"t": "A domicilio", "ic": "i-pin", "img": "furgone.jpg", "pos": "50% 60%", "lead": "Il detailing arriva dove si trova la tua auto: a casa, in ufficio o in azienda.", "f": [["i-route", "Zona servita", "Veneto e Lombardia, con base a Verona."], ["i-tag", "Trasferta", "Gratuita fino a 40 km da Verona. Oltre, 1 € per ogni km in più."], ["i-van", "Laboratorio mobile", "Macchinari, prodotti professionali, acqua ed energia sono a bordo del furgone."], ["i-chat", "Prenotazione", "Mandaci 3-4 foto su WhatsApp: confermiamo prezzo, giorno e orario."]]}, "serve": {"t": "Cosa ci serve", "ic": "i-plug", "img": "foto-lavoro-domicilio.jpg", "pos": "50% 45%", "lead": "Ci serve solo lo spazio per lavorare in sicurezza. Al resto pensiamo noi.", "f": [["i-home", "Area di lavoro", "Un'area privata e sicura: cortile, box, giardino pavimentato o spazio aziendale."], ["i-plug", "Acqua ed energia", "Siamo autonomi. Con una presa elettrica a disposizione lavoriamo in totale silenzio, ideale in condominio."], ["i-drop", "Prima della lucidatura", "L'auto va lavata nei 5 giorni precedenti, così la decontaminazione rende al meglio."], ["i-camera", "Per il preventivo", "Bastano 3-4 foto: interni, carrozzeria e i punti che ti stanno più a cuore."]]}, "mant": {"t": "Mantenimento", "ic": "i-cal", "img": "foto-audi-panoramica.jpg", "pos": "50% 70%", "lead": "Il programma per conservare nel tempo i risultati dei nostri trattamenti.", "f": [["i-user", "Per chi", "Per chi ha già fatto almeno un servizio Premium."], ["i-cal", "Quando", "Un appuntamento ciclico, entro 30-40 giorni dall'ultimo intervento."], ["i-spark", "Cosa facciamo", "Rinnoviamo la lucentezza, rinfreschiamo i protettivi e preveniamo lo sporco stradale."], ["i-tag", "Prezzo", "Su richiesta, in base all'auto e alla frequenza."]]}, "az": {"t": "Per le aziende", "ic": "i-key", "img": "foto-lucidatura-showroom.jpg", "pos": "50% 55%", "lead": "Listini riservati con prezzi dedicati e sconti sui veicoli affidati nel mese. Gli sconti valgono su tutto il listino dedicato.", "g": [["i-key", "Rivenditori e concessionarie", "Preparazione alla vendita nel vostro piazzale o showroom: vetture pronte per foto, esposizione e consegna.", [["-10%", "6 vetture al mese"], ["-20%", "10 vetture al mese"], ["Su misura", "oltre le 10 vetture"]]], ["i-truck", "Aziende di trasporto", "Pulizia e igienizzazione delle cabine nella vostra sede: cabina corta, cabina lunga e tetto alto. Mantenimento flotta su appuntamento fisso.", [["-10%", "3 cabine al mese"], ["-20%", "6 cabine al mese"], ["Su misura", "oltre le 6 cabine"]]]]}};
   var sheet=document.getElementById('sheet'),sbody=document.getElementById('sheet-body'),lastBtn=null;
   function ico(id){return '<svg class="ic"><use href="#'+id+'"/></svg>';}
@@ -680,6 +673,7 @@ html.locked{overflow:hidden}
     if(e.key==='Tab'&&!sheet.hidden){var f=$('a,button',sheet).filter(function(x){return x.offsetParent;});if(!f.length)return;var a=f[0],z=f[f.length-1];
       if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}});
 
+  // PDF downloads (downloads capability when available, plain link otherwise)
   var dlApi=null, dlMsg=document.getElementById('m-dl-msg');
   if(window.claude&&claude.use){claude.use('downloads').then(function(d){dlApi=d;}).catch(function(){});}
   $('.m-pdf').forEach(function(a){
@@ -693,12 +687,15 @@ html.locked{overflow:hidden}
       .then(function(){a.classList.remove('busy');});
     });
   });
+  // Extra panels
   $('.xp-h').forEach(function(h){h.addEventListener('click',function(){var open=h.getAttribute('aria-expanded')!=='true';h.setAttribute('aria-expanded',open);document.getElementById(h.getAttribute('aria-controls')).hidden=!open;});});
+  // Accordion: tap / focus opens a slice
   $('#acc .slice').forEach(function(s){
     function open(){$('#acc .slice').forEach(function(x){x.classList.toggle('on',x===s);});}
     s.addEventListener('mouseenter',open);s.addEventListener('focus',open);s.addEventListener('click',open);
   });
 
+  // GSAP: hero parallax, scrubbed reveal, pinned extras column
   if(hasG&&window.ScrollTrigger&&!reduce){
     gsap.registerPlugin(ScrollTrigger);
     gsap.to('#hero-img',{yPercent:12,scale:1.16,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
