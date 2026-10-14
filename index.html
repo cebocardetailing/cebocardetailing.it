@@ -348,23 +348,24 @@ html.locked{overflow:hidden}
 .js .up.in{transform:none;opacity:1;filter:none}
 @media (prefers-reduced-motion:reduce){.js .up{transform:none;opacity:1;filter:none}}
 
-/* Stile per il logo principale nella Hero */
-.brand-logo-container {
-  margin-bottom: 24px;
+/* Stile unificato per il logo in alto al centro su Web e Mobile */
+.hero-logo-center {
   display: flex;
   justify-content: center;
+  margin-bottom: 24px;
+  width: 100%;
 }
 
-.brand-logo {
-  height: 50px;
+.hero-logo-center img {
+  height: 65px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.6));
 }
 
 @media (max-width: 600px) {
-  .brand-logo {
-    height: 38px;
+  .hero-logo-center img {
+    height: 55px;
   }
 }
 </style>
@@ -411,9 +412,9 @@ html.locked{overflow:hidden}
     <div class="hero-bg"><img id="hero-img" src="furgone.jpg" alt="Il furgone Cebo aperto, con l'attrezzatura per il detailing a bordo" width="1400" height="1867" fetchpriority="high"></div>
     <div class="wrap">
       
-      <!-- LOGO IN ALTO -->
-      <div class="brand-logo-container">
-        <img src="logo.png" alt="Cebo Car Detailing" class="brand-logo">
+      <!-- LOGO CENTRATO IN ALTO (Sia Web che Smartphone) -->
+      <div class="hero-logo-center">
+        <img src="logo.png" alt="Cebo Car Detailing">
       </div>
 
       <h1>La cura che la tua auto <em>merita</em>.</h1>
