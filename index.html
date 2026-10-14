@@ -348,24 +348,26 @@ html.locked{overflow:hidden}
 .js .up.in{transform:none;opacity:1;filter:none}
 @media (prefers-reduced-motion:reduce){.js .up{transform:none;opacity:1;filter:none}}
 
-/* Stile unificato per il logo in alto al centro su Web e Mobile */
+/* Stile per il logo centrato in alto (proporzionato come la copertina PDF) */
 .hero-logo-center {
   display: flex;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   width: 100%;
 }
 
 .hero-logo-center img {
-  height: 65px;
+  height: 85px;
   width: auto;
+  max-width: 380px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.7));
 }
 
 @media (max-width: 600px) {
   .hero-logo-center img {
-    height: 55px;
+    height: 65px;
+    max-width: 280px;
   }
 }
 </style>
@@ -412,7 +414,7 @@ html.locked{overflow:hidden}
     <div class="hero-bg"><img id="hero-img" src="furgone.jpg" alt="Il furgone Cebo aperto, con l'attrezzatura per il detailing a bordo" width="1400" height="1867" fetchpriority="high"></div>
     <div class="wrap">
       
-      <!-- LOGO CENTRATO IN ALTO (Sia Web che Smartphone) -->
+      <!-- LOGO GRANDE E CENTRATO IN ALTO (Sia Web che Mobile) -->
       <div class="hero-logo-center">
         <img src="logo.png" alt="Cebo Car Detailing">
       </div>
