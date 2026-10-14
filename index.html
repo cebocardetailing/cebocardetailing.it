@@ -347,6 +347,26 @@ html.locked{overflow:hidden}
 .js .up{transform:translateY(48px);opacity:.001;filter:blur(8px);transition:transform 1.1s var(--spring),opacity 1.1s var(--spring),filter 1.1s var(--spring)}
 .js .up.in{transform:none;opacity:1;filter:none}
 @media (prefers-reduced-motion:reduce){.js .up{transform:none;opacity:1;filter:none}}
+
+/* Stile per il logo principale nella Hero */
+.brand-logo-container {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.brand-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+@media (max-width: 600px) {
+  .brand-logo {
+    height: 38px;
+  }
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -390,6 +410,12 @@ html.locked{overflow:hidden}
   <section class="hero">
     <div class="hero-bg"><img id="hero-img" src="furgone.jpg" alt="Il furgone Cebo aperto, con l'attrezzatura per il detailing a bordo" width="1400" height="1867" fetchpriority="high"></div>
     <div class="wrap">
+      
+      <!-- LOGO IN ALTO -->
+      <div class="brand-logo-container">
+        <img src="logo.png" alt="Cebo Car Detailing" class="brand-logo">
+      </div>
+
       <h1>La cura che la tua auto <em>merita</em>.</h1>
       <p class="sub">Car detailing a domicilio in Veneto e Lombardia.<br>Il nostro laboratorio arriva da te, ovunque sia la tua auto.</p>
       <div class="hero-actions">
