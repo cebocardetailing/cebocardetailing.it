@@ -29,7 +29,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-anchor:none}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 ::selection{background:var(--cyan);color:var(--on-cyan)}
 img{max-width:100%;display:block}
@@ -44,6 +44,7 @@ p{margin:0;text-wrap:pretty}
 section{padding-block:clamp(64px,8vw,112px)}
 .h2{font-size:clamp(2.2rem,1.4rem + 3.4vw,4.4rem);font-weight:600;letter-spacing:-.045em;line-height:1}
 .sub{color:var(--muted);font-size:1.05rem;max-width:48ch}
+@media (max-width:900px){body::after{display:none}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 
 /* Buttons: island with nested icon */
@@ -106,10 +107,10 @@ section{padding-block:clamp(64px,8vw,112px)}
 @media (max-width:420px){.m-thumb{width:50px;height:50px;border-radius:15px}.m-thumb .ic{width:23px;height:23px}.m-row{gap:12px;padding:10px 2px}.m-go{width:34px;height:34px}.m-foot .btn{flex:1;justify-content:space-between}}
 
 /* Hero */
-.hero{position:relative;min-height:clamp(640px,96dvh,900px);display:grid;align-items:end;padding:120px 0 64px;isolation:isolate;overflow:hidden}
+.hero{position:relative;min-height:clamp(640px,96svh,900px);display:grid;align-items:end;padding:120px 0 64px;isolation:isolate;overflow:hidden}
 .hero-logo{position:absolute;top:calc(22px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:2;display:block;line-height:0}
 .hero-logo img{width:170px;height:auto;filter:drop-shadow(0 6px 22px rgba(0,0,0,.55))}
-@media (max-width:700px){.hero-logo{top:calc(clamp(84px,11svh,120px) + env(safe-area-inset-top,0px))}.hero-logo{width:min(56vw,260px)}.hero-bg img{height:126%;margin-top:-26%}.hero-logo img{width:100%}}
+@media (max-width:700px){.hero-logo{top:calc(clamp(84px,11svh,120px) + env(safe-area-inset-top,0px))}.hero-logo{width:min(56vw,260px)}.hero-bg img{position:absolute;left:0;bottom:0;height:126%}.hero-logo img{width:100%}}
 .hero-bg{position:absolute;inset:0;z-index:-2}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;transform:scale(1.08);filter:saturate(.9) contrast(1.05)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 80% at 50% 10%,rgba(4,5,6,.15),rgba(4,5,6,.78) 55%,var(--bg) 92%),linear-gradient(180deg,rgba(4,5,6,.55),rgba(4,5,6,0) 30%)}
@@ -117,6 +118,8 @@ section{padding-block:clamp(64px,8vw,112px)}
 .hero h1{font-size:clamp(2.6rem,1.2rem + 5.2vw,6.2rem);font-weight:600;letter-spacing:-.04em;line-height:1;max-width:16ch}
 .hero h1 em{font-style:normal;color:var(--cyan)}
 .hero .sub{text-align:center;color:#c6d0d3;max-width:46ch}
+.mbr{display:none}
+@media (max-width:700px){.mbr{display:block}.hero .wrap{grid-template-columns:minmax(0,1fr)}.hero .sub{max-width:none;white-space:nowrap;justify-self:center;font-size:min(1.05rem,calc((100vw - 40px)/25))}}
 .hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 26px;font-size:.86rem;color:var(--muted)}
 .hero-meta span{display:inline-flex;align-items:center;gap:8px}
@@ -173,6 +176,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 .card .media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--spring);filter:saturate(.85)}
 .bezel:hover .media img{transform:scale(1.05)}
 .card .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,5,6,.45) 0%,rgba(4,5,6,.78) 40%,rgba(4,5,6,.97) 100%)}
+.b-base .media::after{background:linear-gradient(180deg,rgba(4,5,6,.5) 0%,rgba(4,5,6,.62) 38%,rgba(4,5,6,.3) 58%,rgba(4,5,6,.55) 72%,rgba(4,5,6,.95) 90%,rgba(4,5,6,.97) 100%)}
 .card > *:not(.media){position:relative;z-index:1}
 .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;font-size:.78rem;font-weight:500;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px var(--hair)}
@@ -333,6 +337,7 @@ html.locked{overflow:hidden}
 .cta{padding-bottom:clamp(72px,10vw,120px)}
 .cta .big{font-size:clamp(3.4rem,1.5rem + 9vw,10rem);font-weight:600;letter-spacing:-.04em;line-height:.92}
 .cta .big span{color:var(--cyan)}
+@media (max-width:520px){.cta .big{font-size:clamp(2.2rem,11.5vw,3.4rem)}}
 .cta-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px 48px;align-items:end;margin-top:40px}
 .cta-grid p{color:var(--muted);max-width:42ch;font-size:1.05rem}
 .cta-acts{display:grid;gap:16px;justify-items:start}
@@ -395,7 +400,7 @@ html.locked{overflow:hidden}
     <a class="hero-logo" href="#top" aria-label="Cebo Car Detailing"><img src="logo.png" alt="Cebo Car Detailing" width="1000" height="326" fetchpriority="high"></a>
     <div class="wrap">
       <h1>La cura che la tua auto <em>merita</em>.</h1>
-      <p class="sub">Car detailing a domicilio in Veneto e Lombardia.<br>Il nostro laboratorio arriva da te, ovunque sia la tua auto.</p>
+      <p class="sub">Car detailing a domicilio in Veneto e Lombardia.<br>Il nostro laboratorio arriva da te, <span class="mbr"></span>ovunque sia la tua auto.</p>
       <div class="hero-actions">
         <a class="btn btn-cyan" href="https://wa.me/393807585519" target="_blank" rel="noopener">Scrivici su WhatsApp<i><svg class="ic"><use href="#i-arrow"/></svg></i></a>
         <a class="btn btn-glass" href="#servizi">Scopri i prezzi<i><svg class="ic"><use href="#i-arrow"/></svg></i></a>
@@ -423,7 +428,7 @@ html.locked{overflow:hidden}
       <div class="bento">
         <article class="bezel b-base up">
           <div class="core card">
-            <div class="media"><img src="foto-interno-cruscotto.jpg" alt="Abitacolo di una Fiat 500e pulito, con volante e cruscotto" loading="lazy" style="object-position:50% 40%"></div>
+            <div class="media"><img src="foto-interno-base.jpg" alt="Un operatore Cebo aspira il bagagliaio di un SUV nero" loading="lazy" style="object-position:50% 62%"></div>
             <div class="top"><span class="chip"><svg class="ic"><use href="#i-wheel"/></svg>Interno</span></div>
             <h3>Interno Base</h3>
             <p class="desc">Aspirazione completa di abitacolo, bagagliaio, sedili e tappetini, poi le superfici principali. Ideale come mantenimento.</p>
@@ -435,7 +440,7 @@ html.locked{overflow:hidden}
         </article>
         <article class="bezel b-prem up">
           <div class="core card">
-            <div class="media"><img src="foto-interno-sedile.jpg" alt="Lavaggio a iniezione-estrazione di un sedile in tessuto" loading="lazy" style="object-position:50% 45%"></div>
+            <div class="media"><img src="foto-interno-premium.jpg" alt="Volante e cruscotto di una Porsche puliti a fondo" loading="lazy" style="object-position:50% 50%"></div>
             <div class="top"><span class="chip"><svg class="ic"><use href="#i-spark"/></svg>Interno</span><span class="chip c">Consigliato</span></div>
             <h3>Interno Premium</h3>
             <p class="desc">Pulizia profonda dell'abitacolo, fino ai punti nascosti, lavorata a pennello con prodotti dedicati.</p>
@@ -702,12 +707,13 @@ html.locked{overflow:hidden}
   // GSAP: hero parallax, scrubbed reveal, pinned extras column
   if(hasG&&window.ScrollTrigger&&!reduce){
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to('#hero-img',{yPercent:12,scale:1.16,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    ScrollTrigger.config({ignoreMobileResize:true});
     var rv=document.getElementById('reveal');
     var keys=['top','gamma.'];
     rv.innerHTML=rv.textContent.split(' ').map(function(w){return '<span class="w'+(keys.indexOf(w)>-1?' k':'')+'">'+w+'</span>';}).join(' ');
     var mm=gsap.matchMedia();
     mm.add('(min-width: 901px)',function(){
+      gsap.to('#hero-img',{yPercent:12,scale:1.16,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
       gsap.to('#reveal .w',{opacity:1,stagger:.08,ease:'none',scrollTrigger:{trigger:'#esperienza',start:'top 75%',end:'center 45%',scrub:true}});
     });
   }else if(hasG&&window.ScrollTrigger){
